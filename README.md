@@ -16,3 +16,11 @@ docker container run --rm -it -v $(pwd)/samples:/var/tmp/samples --name ffmpeg f
     -r 1/1 \
     /var/tmp/samples/outputs/Big_Buck_Bunny.bmp
 ```
+
+1 frame per second
+```
+docker container run --rm -it -v $(pwd)/samples:/var/tmp/samples --name ffmpeg ffmpeg \
+    -i /var/tmp/samples/inputs/bun33s.mp4 \
+    -vf fps=1 \
+    /var/tmp/samples/outputs/bun33s_%0d.bmp
+```
