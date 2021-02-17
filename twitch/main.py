@@ -12,7 +12,7 @@ def authorize(client_id, client_secret):
     return json.loads(res.text)
 
 def query_channel(client_id, access_token):
-    url = f'{URL}/search/channels?query=poe'
+    url = f'{URL}/search/channels?query=path of exile'
     headers = {
         'Client-ID': client_id,
         'Authorization': f'Bearer {access_token}'
@@ -26,4 +26,6 @@ if __name__ == "__main__":
     ids = authorize(client_id, client_secret)
     print(ids.keys())
     channels = query_channel(client_id, ids['access_token'])
-    print(channels)
+    print(channels['data'])
+    for channel in channels['data']:
+        print(f"{channel['title']} - {channel['display_name']}")
